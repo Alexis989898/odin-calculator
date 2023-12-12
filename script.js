@@ -45,8 +45,10 @@ function addOperator(op) {
         display.textContent += op;
     } else {
         if(display.innerText.length < 12) {
+            if(operator) {
+                display.textContent = display.textContent.slice(0, -1);
+            }
             operator = op;
-            console.log("a");
             display.textContent += op;
         } else {
             redDisplayBlink();
