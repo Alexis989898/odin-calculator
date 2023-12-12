@@ -1,0 +1,109 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI';
+    font-size: 1.3rem;
+}
+
+html {
+    height: 100%;
+}
+
+body {
+    height: 100vh;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#calculator {
+    min-width: 400px;
+    min-height: 600px;
+    background-color: rgb(200, 200, 200);
+    display: flex;
+    flex-direction: column;
+    flex-basis: 10px;
+    border-radius: 10px;
+    border: 1px solid black;
+}
+
+.calc-row {
+    display: flex;
+    flex-grow: 1;
+    min-height: 100px;
+}
+
+#display {
+    font-size: 2.5rem;
+    display: flex;
+    justify-content: end;
+    align-items: center;
+    flex-grow: 1;
+    padding: 10px;
+    padding-right: 30px;
+    border-radius: 10px;
+    border: 0px 1px solid black;
+}
+
+.btn {
+    font-size: 2rem;
+    display: flex;
+    flex-basis: 10px;
+    flex-grow: 1;
+    justify-content: center;
+    align-items: center;
+    background-color: rgb(0, 116, 134);
+    border-radius: 10px;
+    border-style: none;
+    margin: 1px;
+    cursor: pointer;
+    user-select: none;
+}
+
+.btn:hover {
+    border-style: dashed;
+    border-color: white;
+    border-width: 2px;
+
+    transition-duration: 100ms;
+}
+
+.btn:active {
+    border-color: white;
+    border-width: 2px;
+    background-color: rgb(0, 81, 94);
+
+    transition-duration: 50ms;
+}
+
+.btn-placeholder {
+    visibility: hidden;
+    display: flex;
+    flex-basis: 10px;
+    flex-grow: 1;
+    justify-content: center;
+    align-items: center;
+    border-radius: 10px;
+    border: none;
+    margin: 1px;
+}
+
+
+
+.blink {
+    animation: blink 2s infinite;
+  }
+  
+  @keyframes blink {
+    0% {
+      opacity: 0;
+    }
+    50% {
+      opacity: 1;
+    }
+    100% {
+      opacity: 0;
+    }
+  }
