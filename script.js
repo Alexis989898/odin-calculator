@@ -8,7 +8,6 @@ const addBtn = document.querySelector("#btn-add");
 const equalsBtn = document.querySelector("#btn-equals");
 const numsBtn = document.querySelectorAll(".num");
 
-
 let n1, n2, operator; //Vars for each operation part
 n1 = null;
 n2 = null;
@@ -37,7 +36,6 @@ function addOperator(op) {
     if(n1 == null) {
         return;
     }
-    showVars();
     if(op && n1 && n2) {
         operate(n1, n2, operator);
         resetOrder = false;
@@ -54,13 +52,6 @@ function addOperator(op) {
             redDisplayBlink();
         }
     }
-}
-
-function showVars() {
-    console.clear();
-    console.log("n1 = " + n1);
-    console.log("operator = " + operator);
-    console.log("n2 = " + n2);
 }
 
 function toFixedIfNecessary(value, dp){
@@ -93,12 +84,11 @@ function divide(x, y) {
 }
 
 function operate(x, y, op) {
-    showVars();
-    if(n1 == NaN || n2 == NaN) {
+    if(isNaN(n1) || isNaN(n2)) {
         clearCalc();
         return;
     }
-    if(!operator || n1 == null || n2 == null) {
+    if(!operator || n1 === null || n2 === null) {
         return;
     }
     let result = null;
@@ -123,6 +113,7 @@ function redDisplayBlink() {
 }
 
 function addNum(num) {
+    console.log(num);
     if(resetOrder) {
         resetOrder = false;
         clearCalc();
@@ -130,12 +121,14 @@ function addNum(num) {
         display.textContent += num;
         return;
     }
-    showVars();
     if(display.innerText.length < 12) {
         if(operator) {
             if(!n2) {
                 n2 = num;
             } else {
+                if(num == "." && n2.toString().includes(".")) {
+                    return;
+                }
                 n2 += num;
             }
             display.textContent += num;
@@ -143,6 +136,9 @@ function addNum(num) {
             if(!n1) {
                 n1 = num;
             } else {
+                if(num == "." && n1.toString().includes(".")) {
+                    return;
+                }
                 n1 += num;
             }
             display.textContent += num;
@@ -150,6 +146,4 @@ function addNum(num) {
     } else {
         redDisplayBlink();
     }
-
-
 }
